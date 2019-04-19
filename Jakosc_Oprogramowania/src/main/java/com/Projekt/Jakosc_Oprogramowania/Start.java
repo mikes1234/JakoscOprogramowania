@@ -8,6 +8,6 @@ public class Start {
 
 	@RequestMapping("/czesc")
 	public String czesc() {
-		return "Cześć";
+		return "Projekt na zaliczenie";
 	}
 }
