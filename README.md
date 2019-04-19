@@ -1,0 +1,2 @@
+# JakoscOprogramowania
+Projekt na zaliczenie
