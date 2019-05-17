@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WelcomeController {
-
+	
 	@RequestMapping("/")
-	public String welcome() {
-		return "welcome";
+	public String Start() {
+		return "Start";
 	}
 
 	@RequestMapping(value="/reservations", method = RequestMethod.GET)
