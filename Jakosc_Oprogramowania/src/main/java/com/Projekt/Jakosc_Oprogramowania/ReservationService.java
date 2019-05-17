@@ -21,15 +21,22 @@ public class ReservationService {
         testRes.setResObject("TestObj");
         testRes.setFirstName("Jakub");
         testRes.setLastName("Testowy");
-
-
+        
+        Reservation testRes2 = new Reservation();
+        testRes2.setId(2);
+        testRes2.setResObject("TestObj2");
+        testRes2.setFirstName("Jakub");
+        testRes2.setLastName("Testowy");
+        
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
         String dateInString = "31-08-1982 10:20:56";
         Date date = sdf.parse(dateInString);
 
         testRes.setResDate(date);
+        testRes2.setResDate(date);
         resList.add(testRes);
+        resList.add(testRes2);
 
         for(Reservation reservation : resList){
             System.out.println(reservation.getId());
@@ -38,7 +45,8 @@ public class ReservationService {
             System.out.println(reservation.getLastName());
             System.out.println(reservation.getResDate());
         }
-
+        
+        
         return resList;
     }
 

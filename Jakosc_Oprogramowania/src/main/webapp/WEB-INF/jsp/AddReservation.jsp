@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 			</div>
 			<div class="inputs">
 				
-				Type of reservation: <input type="text" name="name"/><br/>
+				Type of reservation: <input type="text" name="object"/><br/>
 				First name: <input type="text" name="firstName"/><br/>
 				Last name: <input type="text" name="lastName"/><br/>   
 				Date: <input type="datetime-local" id="reservationDate"
