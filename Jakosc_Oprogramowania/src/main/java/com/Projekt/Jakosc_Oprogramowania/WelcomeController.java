@@ -11,23 +11,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WelcomeController {
 	
-	@RequestMapping("/")
-	public String Start() {
-		return "Start";
-	}
-	@RequestMapping("/add")
+	
+	/*@RequestMapping("/")
 	public String Add() {
 		return "AddReservation";
-	}
+	}*/
 
-	@RequestMapping(value="/reservations", method = RequestMethod.GET)
+	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView getdata() throws ParseException {
 
 		
 
 		List<Reservation> list = getReservations();
 		//return back to index.jsp
-		ModelAndView model = new ModelAndView("reservations");
+		ModelAndView model = new ModelAndView("Frontend");
 		model.addObject("lists", list);
 
 		return model;

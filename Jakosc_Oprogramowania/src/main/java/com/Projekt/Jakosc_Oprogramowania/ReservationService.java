@@ -18,15 +18,15 @@ public class ReservationService {
         List<Reservation> resList = new ArrayList<>();
         Reservation testRes = new Reservation();
         testRes.setId(1);
-        testRes.setResObject("TestObj");
+        testRes.setResObject("Stolik");
         testRes.setFirstName("Jakub");
-        testRes.setLastName("Testowy");
+        testRes.setLastName("Dziekoński");
         
         Reservation testRes2 = new Reservation();
         testRes2.setId(2);
-        testRes2.setResObject("TestObj2");
-        testRes2.setFirstName("Jakub");
-        testRes2.setLastName("Testowy");
+        testRes2.setResObject("Pokój");
+        testRes2.setFirstName("Mikołaj");
+        testRes2.setLastName("Maik");
         
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
