@@ -1,4 +1,4 @@
-package com.Projekt.Jakosc_Oprogramowania;
+package com.reservationservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
