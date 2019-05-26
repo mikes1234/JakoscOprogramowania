@@ -22,7 +22,7 @@ public class ReservationController {
     @RequestMapping(value = "/reservations", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("reservations", reservationService.listAllReservations());
-        System.out.println("Returning reservations:");
+        //System.out.println("Returning reservations:");
         return "reservations";
     }
 
