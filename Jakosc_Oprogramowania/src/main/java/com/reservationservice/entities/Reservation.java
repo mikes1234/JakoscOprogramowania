@@ -23,7 +23,10 @@ public class Reservation {
     }
 
     public void setId(Integer id) {
-        this.id = id;
+       /* if(id == null) {
+        	throw new IllegalArgumentException("Id must be positive");
+        }*/
+    	this.id = id;
     }
 
     public Integer getVersion() {
@@ -31,7 +34,7 @@ public class Reservation {
     }
 
     public void setVersion(Integer version) {
-        this.version = version;
+    	this.version = version;
     }
 
     public String getResObject() {
@@ -39,7 +42,10 @@ public class Reservation {
     }
 
     public void setResObject(String resObject) {
-        this.resObject = resObject;
+    	if(resObject == null || resObject.equals("")) {
+        	throw new IllegalArgumentException("resObject must be filled out");
+        }
+    	this.resObject = resObject;
     }
 
     public String getFirstName() {
@@ -47,7 +53,10 @@ public class Reservation {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    	if(firstName == null || firstName.equals("")) {
+        	throw new IllegalArgumentException("firstName must be filled out");
+        }
+    	this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -55,7 +64,10 @@ public class Reservation {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+    	if(lastName == null || lastName.equals("")) {
+        	throw new IllegalArgumentException("lastName must be filled out");
+        }
+    	this.lastName = lastName;
     }
 
     public String getResDate() {
@@ -63,7 +75,10 @@ public class Reservation {
     }
 
     public void setResDate(String resDate) {
-        this.resDate = resDate;
+    	if(resDate == null || resDate.equals("") || resDate.length()>16) {
+        	throw new IllegalArgumentException("Negative value");
+        }
+    	this.resDate = resDate;
     }
 
 }

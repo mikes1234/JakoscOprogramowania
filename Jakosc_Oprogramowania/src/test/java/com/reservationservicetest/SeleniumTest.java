@@ -2,6 +2,7 @@ package com.reservationservicetest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,15 +31,19 @@ public class SeleniumTest {
         
         driver.findElement(By.linkText("Create new reservation")).click();
         WebElement myDynamicElement = 
-        		(new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.linkText("Create new reservation")));
+        		(new WebDriverWait(driver, 100)).until(ExpectedConditions.presenceOfElementLocated(By.linkText("Create new reservation")));
         driver.findElement(By.id("resObject")).sendKeys("Table10");
         driver.findElement(By.id("firstName")).sendKeys("Adrian");
         driver.findElement(By.id("lastName")).sendKeys("Nowak");
-        driver.findElement(By.id("resDate")).sendKeys("2019-06-30T10:10");
+        driver.findElement(By.id("resDate")).sendKeys("300620191010");
+       
+        myDynamicElement = 
+        		(new WebDriverWait(driver, 100)).until(ExpectedConditions.presenceOfElementLocated(By.id("submit")));
+        
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.id("submit")).click();
 
-        myDynamicElement = 
-        		(new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("submit")));
+        
         driver.quit();
        
     }

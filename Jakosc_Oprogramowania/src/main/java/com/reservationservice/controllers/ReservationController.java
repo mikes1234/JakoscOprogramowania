@@ -16,14 +16,18 @@ public class ReservationController {
 
     @Autowired
     public void setProductService(ReservationService reservationService) {
-        this.reservationService = reservationService;
+    	if(reservationService == null) {
+        	throw new IllegalArgumentException("Negative value");
+        }
+    	this.reservationService = reservationService;
     }
 
     @RequestMapping(value = "/reservations", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("reservations", reservationService.listAllReservations());
         //System.out.println("Returning reservations:");
-        return "reservations";
+        return "reservations"; 
+        
     }
 
     @RequestMapping("reservation/{id}")
@@ -42,6 +46,8 @@ public class ReservationController {
     public String newReservation(Model model) {
         model.addAttribute("reservation", new Reservation());
         return "reservationform";
+        
+        
     }
 
     @RequestMapping(value = "reservation", method = RequestMethod.POST)

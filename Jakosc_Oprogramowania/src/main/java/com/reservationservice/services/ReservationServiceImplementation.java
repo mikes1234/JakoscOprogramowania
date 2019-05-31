@@ -11,7 +11,12 @@ public class ReservationServiceImplementation implements ReservationService {
     private ReservationRepository reservationRepository;
 
     @Autowired
-    public void setReservationRepository(ReservationRepository reservationRepository) { this.reservationRepository = reservationRepository; }
+    public void setReservationRepository(ReservationRepository reservationRepository) {
+    	if(reservationRepository == null) {
+        	throw new IllegalArgumentException("Negative value");
+        }
+    	this.reservationRepository = reservationRepository; 
+    }
 
     @Override
     public Iterable<Reservation> listAllReservations() {
@@ -20,11 +25,15 @@ public class ReservationServiceImplementation implements ReservationService {
 
     @Override
     public Reservation getReservationById(Integer id) {
-        return reservationRepository.findOne(id);
+    	if(id == null) {
+        	throw new IllegalArgumentException("Negative value");
+        }
+    	return reservationRepository.findOne(id);
     }
 
     @Override
-    public Reservation saveReservation(Reservation reservation) { return reservationRepository.save(reservation); }
+    public Reservation saveReservation(Reservation reservation) { 
+    	return reservationRepository.save(reservation); }
 
     @Override
     public void deleteReservation(Integer id) {
