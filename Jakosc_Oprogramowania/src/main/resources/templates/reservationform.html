@@ -19,19 +19,19 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Reservation Object:</label>
                 <div class="col-sm-10">
-                    <input type="text" pattern="[a-zA-Z0-9ząćęłńóśźżĄĘŁŃÓŚŹŻ]+" class="form-control" th:field="*{resObject}"/>
+                    <input type="text" pattern="[a-zA-Z0-9ząćęłńóśźżĄĘŁŃÓŚŹŻ]+" class="form-control" th:field="*{resObject}" th:required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">First Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" pattern="[A-Za-ząćęłńóśźżĄĘŁŃÓŚŹŻ]+" class="form-control" th:field="*{firstName}"/>
+                    <input type="text" pattern="[A-Za-ząćęłńóśźżĄĘŁŃÓŚŹŻ]+" class="form-control" th:field="*{firstName}" th:required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Last Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" pattern="[A-Za-ząćęłńóśźżĄĘŁŃÓŚŹŻ]+" class="form-control" th:field="*{lastName}"/>
+                    <input type="text" pattern="[A-Za-ząćęłńóśźżĄĘŁŃÓŚŹŻ]+" class="form-control" th:field="*{lastName}" th:required="required"/>
                 </div>
             </div>
             <div class="form-group">
@@ -39,7 +39,7 @@
                 <div class="col-sm-10">
                     <input type="datetime-local" value="2019-06-04T13:15"
                            min="2019-06-04T13:15" max="2099-01-01T00:00"
-                           class="form-control" th:field="*{resDate}"/>
+                           class="form-control" th:field="*{resDate}" th:required="required"/>
                 </div>
             </div>
             <div class="row">
