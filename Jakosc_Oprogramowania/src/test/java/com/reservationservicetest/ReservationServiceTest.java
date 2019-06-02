@@ -6,83 +6,123 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import com.reservationservice.AppRunner;
 import com.reservationservice.entities.Reservation;
 import com.reservationservice.repositories.ReservationRepository;
-import com.reservationservice.services.ReservationService;
 import com.reservationservice.services.ReservationServiceImplementation;
 
-@SpringBootTest
+import net.sourceforge.htmlunit.corejs.javascript.ast.ErrorCollector;
+
+@SpringBootTest(classes = AppRunner.class)
+@RunWith(SpringRunner.class)
+@DataJpaTest
+//@AutoConfigureTestDatabase
 public class ReservationServiceTest {
 
-	public ReservationServiceImplementation impl;
-	public ReservationRepository rep;
-	public ReservationService rs;
-	
+	private ReservationServiceImplementation reservationImplementation;
+	@Autowired
+	private ReservationRepository reservationRepository;
+
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("set up class");
-        System.out.flush();
+		System.out.flush();
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
 		System.out.println("tear down class");
-        System.out.flush();
+		System.out.flush();
 	}
 
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("set up");
-		impl = new ReservationServiceImplementation();
 	}
-	
+
 	@After
-    public void tearDown() {
-        System.out.println("tear down");
-        System.out.flush();
-    }
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testSetReservationRepository() {
-		impl.setReservationRepository(null);
+	public void tearDown() {
+		System.out.println("tear down");
+		System.out.flush();
+	}
+
+	@Ignore
+	@Test
+	public void ignoredTest() {
+
 	}
 
 	@Test
 	public void testListAllReservations() {
-		fail("Not yet implemented"); // TODO
+		Reservation res = new Reservation();
+		res.setId(1);
+		res.setResObject("table");
+		Reservation res2 = new Reservation();
+		res.setId(2);
+		res.setResObject("room");
+
+		reservationRepository.save(res);
+		reservationRepository.save(res2);
+
+		System.out.println("TTTTTTTTTTTTT");
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testGetReservationById() {
-		impl.getReservationById(null);
-		
+		Reservation res = new Reservation();
+		String lastName = "Michalski";
+		res.setId(5);
+		res.setLastName(lastName);
+
+		reservationRepository.save(res);
+
+		assertEquals(lastName, reservationRepository.findOne(5).getLastName());
+		assertNotEquals("Kowalski", reservationRepository.findOne(5).getLastName());
 	}
 
 	@Test
 	public void testSaveReservation() {
 		Reservation res = new Reservation();
-		//long size = rep.count();
-		impl.setReservationRepository(rep);
-		impl.saveReservation(res);
-		
-		//assertEquals(size+1,rep.count());
-		assertTrue(rep.count() > 0);
+		res.setId(4);
+		res.setResObject("table");
+		res.setFirstName("Dorian");
+		res.setLastName("Michalski");
+
+		int empty = (int) reservationRepository.count();
+		reservationRepository.save(res);
+
+		assertEquals(empty + 1, reservationRepository.count());
+		assertNotEquals(empty, reservationRepository.count());
+		assertTrue(reservationRepository.count() > 0);
 	}
+
+	/*
+	 * @Rule public ErrorCollector collector = new ErrorCollector();
+	 */
 
 	@Test
 	public void testDeleteReservation() {
-		impl = new ReservationServiceImplementation();
 		Reservation res = new Reservation();
-		//long size = rep.count();
-		//System.out.println(size);
-		res.setId(1);
-		impl.saveReservation(res);
-		impl.deleteReservation(1);
-		assertEquals(0,rep.count());
+		res.setId(4);
+		res.setResObject("table");
+		res.setFirstName("Dorian");
+		res.setLastName("Michalski");
+
+		reservationRepository.save(res);
+		reservationRepository.delete(4);
+
+		assertEquals(0, reservationRepository.count());
+		assertFalse(reservationRepository.count() > 0);
+
 	}
 
 }

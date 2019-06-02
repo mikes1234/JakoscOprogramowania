@@ -45,6 +45,8 @@ public class ReservationController {
     @RequestMapping("reservation/new")
     public String newReservation(Model model) {
         model.addAttribute("reservation", new Reservation());
+        
+        System.out.println(reservationService.getReservationById(1).getResObject());
         return "reservationform";
         
         
