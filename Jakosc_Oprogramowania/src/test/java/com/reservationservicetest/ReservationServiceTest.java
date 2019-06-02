@@ -10,6 +10,8 @@ import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,10 +30,15 @@ import net.sourceforge.htmlunit.corejs.javascript.ast.ErrorCollector;
 //@AutoConfigureTestDatabase
 public class ReservationServiceTest {
 
+	@InjectMocks
 	private ReservationServiceImplementation reservationImplementation;
+	
 	@Autowired
 	private ReservationRepository reservationRepository;
 
+	@Mock
+	private Reservation res;
+	
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("set up class");
@@ -47,6 +54,7 @@ public class ReservationServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("set up");
+		res = new Reservation();
 	}
 
 	@After
@@ -63,7 +71,6 @@ public class ReservationServiceTest {
 
 	@Test
 	public void testListAllReservations() {
-		Reservation res = new Reservation();
 		res.setId(1);
 		res.setResObject("table");
 		Reservation res2 = new Reservation();
@@ -78,7 +85,6 @@ public class ReservationServiceTest {
 
 	@Test
 	public void testGetReservationById() {
-		Reservation res = new Reservation();
 		String lastName = "Michalski";
 		res.setId(5);
 		res.setLastName(lastName);
@@ -91,7 +97,6 @@ public class ReservationServiceTest {
 
 	@Test
 	public void testSaveReservation() {
-		Reservation res = new Reservation();
 		res.setId(4);
 		res.setResObject("table");
 		res.setFirstName("Dorian");
@@ -99,7 +104,7 @@ public class ReservationServiceTest {
 
 		int empty = (int) reservationRepository.count();
 		reservationRepository.save(res);
-
+		
 		assertEquals(empty + 1, reservationRepository.count());
 		assertNotEquals(empty, reservationRepository.count());
 		assertTrue(reservationRepository.count() > 0);
@@ -111,7 +116,6 @@ public class ReservationServiceTest {
 
 	@Test
 	public void testDeleteReservation() {
-		Reservation res = new Reservation();
 		res.setId(4);
 		res.setResObject("table");
 		res.setFirstName("Dorian");
