@@ -23,9 +23,6 @@ public class Reservation {
     }
 
     public void setId(Integer id) {
-       /* if(id == null) {
-        	throw new IllegalArgumentException("Id must be positive");
-        }*/
     	this.id = id;
     }
 

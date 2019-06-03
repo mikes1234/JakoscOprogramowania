@@ -39,12 +39,6 @@ public class ReservationTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testSetId() {
-		System.out.println("test Id");
-		reservation.setId(null);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
 	public void testSetResObject() {
 		System.out.println("test resObject");
 		reservation.setResObject("");

@@ -27,7 +27,6 @@ import net.sourceforge.htmlunit.corejs.javascript.ast.ErrorCollector;
 @SpringBootTest(classes = AppRunner.class)
 @RunWith(SpringRunner.class)
 @DataJpaTest
-//@AutoConfigureTestDatabase
 public class ReservationServiceTest {
 
 	@InjectMocks
@@ -74,13 +73,13 @@ public class ReservationServiceTest {
 		res.setId(1);
 		res.setResObject("table");
 		Reservation res2 = new Reservation();
-		res.setId(2);
-		res.setResObject("room");
-
+		res2.setId(2);
+		res2.setResObject("room");
 		reservationRepository.save(res);
 		reservationRepository.save(res2);
 
-		System.out.println("TTTTTTTTTTTTT");
+		reservationRepository.findAll();
+		System.out.println("All reservations");
 	}
 
 	@Test

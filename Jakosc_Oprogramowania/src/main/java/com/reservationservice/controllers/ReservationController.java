@@ -25,9 +25,7 @@ public class ReservationController {
     @RequestMapping(value = "/reservations", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("reservations", reservationService.listAllReservations());
-        //System.out.println("Returning reservations:");
-        return "reservations"; 
-        
+        return "reservations";
     }
 
     @RequestMapping("reservation/{id}")
@@ -45,11 +43,7 @@ public class ReservationController {
     @RequestMapping("reservation/new")
     public String newReservation(Model model) {
         model.addAttribute("reservation", new Reservation());
-        
-        System.out.println(reservationService.getReservationById(1).getResObject());
         return "reservationform";
-        
-        
     }
 
     @RequestMapping(value = "reservation", method = RequestMethod.POST)

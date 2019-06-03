@@ -22,7 +22,6 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            
             <tr class="data" th:each="reservation : ${reservations}">
                 <td th:text="${reservation.id}"><a href="/reservation/${reservation.id}">Id</a></td>
                 <td th:text="${reservation.resObject}">Reservation Object</td>
@@ -33,9 +32,7 @@
                 <td><a th:href="${'/reservation/edit/' + reservation.id}">Edit</a></td>
                 <td><a th:href="${'/reservation/delete/' + reservation.id}">Delete</a></td>
             </tr>
-            
         </table>
-
     </div>
 </div>
 
