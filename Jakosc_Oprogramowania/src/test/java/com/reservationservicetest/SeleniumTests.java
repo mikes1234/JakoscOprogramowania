@@ -25,16 +25,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SeleniumTests {
 
-	@BeforeEach
-	public void startBrowser(){
-		SeleniumManager.initWebDriver();
-	}
-	@AfterEach
-	public void tearDown(){
-		SeleniumManager.shutdownDriver();
-	}
-
-
 	@Test
 	public void seleniumTestPositive() throws InterruptedException {
 		System.setProperty("webdriver.opera.driver", "/Users/zashiwaki/Desktop/Java/operadriver_mac64/operadriver");
